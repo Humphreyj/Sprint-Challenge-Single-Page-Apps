@@ -1,5 +1,12 @@
 import React, { useState,useEffect } from 'react';
+import styled from 'styled-components';
 
+
+const Input = styled.input`
+width: 100%;
+
+
+`
 
 
 const SearchForm = (props) => {
@@ -8,15 +15,13 @@ const SearchForm = (props) => {
 
   return (
     <form>
-      <input 
+      <Input 
       name='search' 
       type="text" 
-      placeholder='Search For a Character'
+      placeholder='Looking for something?'
       onChange={props.getSearch}
       value={props.searchTerm}
       />
-
-      <button className="search">Search</button>
     </form>
   );
 }

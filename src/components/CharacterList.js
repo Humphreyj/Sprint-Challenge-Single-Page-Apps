@@ -2,14 +2,28 @@ import React, { useState,useEffect  } from "react";
 import axios from 'axios';
 import CharacterCard from './CharacterCard';
 import SeachForm from '../components/SearchForm';
+import styled from 'styled-components';
+
+const Characters = styled.section `
+display: flex;
+width: 100%;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`
+
+const Section = styled.section `
+display: flex;
+flex-wrap: wrap;
+justify-content: space-evenly;
+align-items: center;
+width: 80%;
+margin: 0 auto;
+`
 
 const CharacterList = () => {
   const [characters, updateCharacters] = useState([]);
   const [page, changePage] = useState(1);
-
-  
-
-
 
   useEffect(() => {
     const getCharacters = () => {
@@ -43,10 +57,11 @@ const CharacterList = () => {
   console.log(filteredCharacters)
 
   return (
-    <section className="character-list">
+    <Characters className="character-list">
       <SeachForm
       getSearch={getSearch}
       searchTerm={searchTerm} />
+      <Section>
       {
         filteredCharacters.map((character,i) => {
           return (
@@ -62,7 +77,9 @@ const CharacterList = () => {
           )
         })
       }
-    </section>
+      </Section>
+      
+    </Characters>
 
   )
     }

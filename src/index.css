@@ -1,4 +1,9 @@
+
 body {
+  box-sizing: border-box;
+}
+
+/* body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -27,13 +32,13 @@ main {
 .grid-view div.card.ui {
   margin: 1.25rem;
 }
-/*
+
 .main-img {
   display: block;
   border-radius: 100%;
   margin: 0 auto;
-} */
+}
 
 header h1 {
   text-align: center;
-}
+} */
