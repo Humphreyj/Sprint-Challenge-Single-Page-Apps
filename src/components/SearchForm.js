@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-export default function SearchForm() {
- 
+
+
+const SearchForm = (props) => {
+
+  const [searchTerm, searchHandler] = useState('');
   return (
-    <section className="search-form">
-     // Add a search form here
-    </section>
+    <form>
+      <input name='search' type="text" placeholder='Search For a Character'/>
+
+      <button className="search">Search</button>
+    </form>
   );
 }
+
+export default SearchForm;
