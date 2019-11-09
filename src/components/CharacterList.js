@@ -7,6 +7,10 @@ const CharacterList = () => {
   const [characters, updateCharacters] = useState([]);
   const [page, changePage] = useState(1);
 
+  
+
+
+
   useEffect(() => {
     const getCharacters = () => {
       
@@ -27,11 +31,24 @@ const CharacterList = () => {
   }, []);
   console.log(characters)
 
+  const [searchTerm, searchHandler] = useState('');
+  
+    const getSearch = (event) => {
+      searchHandler(event.target.value)
+      console.log(searchTerm)
+    }
+  let filteredCharacters=characters.filter(character => {
+    return character.name.indexOf(searchTerm) != -1;
+  });
+  console.log(filteredCharacters)
+
   return (
     <section className="character-list">
-      <SeachForm />
+      <SeachForm
+      getSearch={getSearch}
+      searchTerm={searchTerm} />
       {
-        characters.map((character,i) => {
+        filteredCharacters.map((character,i) => {
           return (
             <CharacterCard
             key={i}

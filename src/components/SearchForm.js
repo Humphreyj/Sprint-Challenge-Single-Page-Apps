@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 
 
 
 const SearchForm = (props) => {
 
-  const [searchTerm, searchHandler] = useState('');
+  
+
   return (
     <form>
-      <input name='search' type="text" placeholder='Search For a Character'/>
+      <input 
+      name='search' 
+      type="text" 
+      placeholder='Search For a Character'
+      onChange={props.getSearch}
+      value={props.searchTerm}
+      />
 
       <button className="search">Search</button>
     </form>
