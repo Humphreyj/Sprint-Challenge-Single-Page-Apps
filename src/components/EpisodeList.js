@@ -1,10 +1,10 @@
 import React, { useState,useEffect  } from "react";
 import axios from 'axios';
-import LocationCard from './LocationCard';
+import EpisodeCard from './LocationCard';
 import SeachForm from '../components/SearchForm';
 
-const LocationsList = () => {
-  const [locations, updateLocations] = useState([]);
+const EpisodeList = () => {
+  const [episodes, updateEpisodes] = useState([]);
   const [page, changePage] = useState(1);
 
   
@@ -12,13 +12,13 @@ const LocationsList = () => {
 
 
   useEffect(() => {
-    const getLocations = () => {
+    const getEpisodes = () => {
       
         axios
-        .get('https://rickandmortyapi.com/api/location/')
+        .get('https://rickandmortyapi.com/api/episode/')
         .then(res => {
           console.log(res.data.results);
-          updateLocations(res.data.results)
+          updateEpisodes(res.data.results)
           
         })
         .catch(err => {
@@ -27,9 +27,9 @@ const LocationsList = () => {
         
       
     }
-    getLocations();
+    getEpisodes();
   }, []);
-  console.log(locations)
+  console.log(episodes)
 
   const [searchTerm, searchHandler] = useState('');
   
@@ -37,10 +37,10 @@ const LocationsList = () => {
       searchHandler(event.target.value)
       console.log(searchTerm)
     }
-  let filteredLocations=locations.filter(location => {
-    return location.name.indexOf(searchTerm) != -1;
+  let filteredEpisodes=episodes.filter(episode => {
+    return episode.name.indexOf(searchTerm) != -1;
   });
-  console.log(filteredLocations)
+  console.log(filteredEpisodes)
 
   return (
     <section className="location-list">
@@ -48,13 +48,12 @@ const LocationsList = () => {
       getSearch={getSearch}
       searchTerm={searchTerm} />
       {
-        filteredLocations.map((location,i) => {
+        filteredEpisodes.map((episode,i) => {
           return (
-            <LocationCard
+            <EpisodeCard
             key={i}
-            name={location.name}
-            type={location.type}
-            
+            name={episode.name}
+            episode={episode.episode}
             />
           )
         })
@@ -64,4 +63,4 @@ const LocationsList = () => {
   )
     }
 
-export default LocationsList;
+export default EpisodeList;

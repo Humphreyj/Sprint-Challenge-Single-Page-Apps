@@ -11,8 +11,8 @@ const CharacterCard = (props) => {
         <p className="status">{props.gender}</p>
       </div>
 <div className="character-location">
-  <p className="location">{props.location}</p>
-  <p className="origin">{props.origin}</p>
+  <p className="location"> Location: {props.location}</p>
+  <p className="origin"> Origin: {props.origin}</p>
 </div>
     </div>
   );
